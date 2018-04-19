@@ -1,7 +1,8 @@
 # JSONParse
 
 LinWei   
-2018-04-19     
+2018-04-19  
+
 This is a function which is about the JSON text parsing to a real JavaScript object literal.
 You can download it from this [JSONParse](https://github.com/linweinb/JSONParse.git).
 
