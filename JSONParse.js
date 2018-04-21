@@ -72,9 +72,10 @@ var JSONParse=(function(){
 
     var blank=function(){
 
-        // Process white space.
+        // Process the control character whilch is in ASCII.
+        // All entires in the ACSII table below code 32(the ASCII code of ' ') are of this kind.
 
-        while(ch&&ch===' '){
+        while(ch&&ch<=' '){
             next();
         }
     };
