@@ -1,28 +1,84 @@
+/*
+ * JSONStringify.js
+   @LinWei
+   2018-04-26
+
+   This is a function like native JSON.stringify.
+   
+   For example:
+
+   var obj={
+       key1:12,
+       key2:null,
+       key3:[1,2,3],
+       key4:{a:1,b:2},
+       key5:'linwei',
+       key6:true
+   };
+
+   console.log(JSONStringify(obj)); 
+   => '{"key1":12,"key2":null,"key3":[1,2,3],"key4":{"a":1,"b":2},"key5":"linwei","key6":true}'
+
+
+   var array=[
+       12,
+       null,
+       [1,2,3],
+       {a:1,b:2},
+       'linwei',
+       true
+   ];
+
+   console.log(JSONStringify(array));
+   =>'[12,null,[1,2,3],{a:1,b:2},"linwei",true]'
+ */
+
+
 var JSONStringify=(function(){
-    var str;
+    "use strict";
+
+    var str;     // The final result.
+
+    // Check if it is a boolean value.
     var isBoolean=function(value){
         return typeof value==='boolean';
     };
+
+    // Check if it is a number.
     var isNumber=function(value){
         return typeof value==='number'&&isFinite(value);
     };
+
+    // Check if it is a string.
     var isString=function(value){
         return typeof value==='string';
     };
+
+    // Check if it is a null value.
     var isNull=function(value){
         return typeof value==='object'&&value==undefined;
     };
+
+    // Check if it is an object literal.
     var isObject=function(obj){
         var toString=Object.prototype.toString;
         return toString.apply(obj)==='[object Object]';
     };
+
+    // Check if it is an array.
     var isArray=function(array){
         var toString=Object.prototype.toString;
         return toString.apply(array)==='[object Array]';
     };
+
+    // Get the property name of all enumerable properties.
     var keys=function(obj){
         return Object.keys(obj);
     };
+
+    // Splicing string.
+
+    // Object.
     var objectToString=function(obj){
         var names=keys(obj);
         str+='{';
@@ -30,7 +86,6 @@ var JSONStringify=(function(){
             str+='"';
             str+=names[i];
             str+='":';
-            // 处理属性值
             switch(true){
                 case isBoolean(obj[names[i]]):
                      booleanToString(obj[names[i]]);
@@ -59,6 +114,8 @@ var JSONStringify=(function(){
         }
         str+='}';
     };
+
+    // Array.
     var arrayToString=function(array){
         str+='[';
         for(var i=0;i<array.length;i+=1){
@@ -90,15 +147,23 @@ var JSONStringify=(function(){
         }
         str+=']';
     };
+
+    // Boolean value.
     var booleanToString=function(value){
         str+=value?'true':'false';
     };
+
+    // Number.
     var numberToString=function(value){
         str+=value.toString();
     };
+
+    // String.
     var stringToString=function(value){
         str+='"'+value+'"';
     };
+
+    // null
     var nullToString=function(){
         str+='null';
     };
