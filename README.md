@@ -24,7 +24,7 @@ console.log(typeof JSONParse('   {   "key1"  :  12  ,  "key2"  :  "linwei"   }  
 ```
 
 
-You can use JSONStringify.js to make an real object or array to the JSON string. For example:
+You can use JSONStringify.js to make an real object or array to the JSON string. For example :
 ```
 var obj={
     key1:12,
@@ -41,4 +41,4 @@ console.log(JSONStringify(obj));
 var array=[ 12, null, [1,2,3], {a:1,b:2}, 'linwei', true ];
 
 console.log(JSONStringify(array));
-// =>'[12,null,[1,2,3],{a:1,b:2},"linwei",true]'
+// => '[12,null,[1,2,3],{a:1,b:2},"linwei",true]'
