@@ -20,14 +20,7 @@
    => '{"key1":12,"key2":null,"key3":[1,2,3],"key4":{"a":1,"b":2},"key5":"linwei","key6":true}'
 
 
-   var array=[
-       12,
-       null,
-       [1,2,3],
-       {a:1,b:2},
-       'linwei',
-       true
-   ];
+   var array=[ 12, null, [1,2,3], {a:1,b:2}, 'linwei', true ];
 
    console.log(JSONStringify(array));
    =>'[12,null,[1,2,3],{a:1,b:2},"linwei",true]'
